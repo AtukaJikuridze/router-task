@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 export const routes = [
   {
     path: "/",
-    element: <Layout />,
+    element: <Layout isVertical={true} />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },

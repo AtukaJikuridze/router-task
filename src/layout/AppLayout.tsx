@@ -1,9 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
-
-const Layout: React.FC = () => {
+interface INav {
+  isVertical: boolean;
+}
+const Layout: React.FC<INav> = ({ isVertical }) => {
   return (
     <div>
-      <nav className="flex justify-between px-10 py-3 bg-blue-400">
+      <nav
+        className={`  px-10 py-5 bg-blue-400 ${
+          isVertical
+            ? "flex justify-between"
+            : "flex flex-col items-center gap-4"
+        } `}
+      >
         <div>
           <h1 className="font-bold text-2xl">Logo</h1>
         </div>
