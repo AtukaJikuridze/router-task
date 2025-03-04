@@ -1,15 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { routes } from "./routes";
-import { AuthProvider } from "./context/AuthContext";
-
-const router = createBrowserRouter(routes);
+import MyRoutes from "./MyRoutes";
+import "./globalCss.css";
 
 const App = () => {
-  return (
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
-  );
+  return <MyRoutes />;
 };
 
 export default App;

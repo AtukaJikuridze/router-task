@@ -1,52 +1,30 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import "../globalCss.css";
 
-interface INav {
-  isVertical: boolean;
-}
-
-const Layout: React.FC<INav> = ({ isVertical }) => {
-  const { user, logout } = useAuth();
+export const Layout = ({ children }: { children: React.ReactNode }) => {
+  const { user, logout, login } = useAuth();
 
   return (
-    <div>
-      <nav
-        className={`px-10 py-5 bg-blue-400 ${
-          isVertical
-            ? "flex justify-between"
-            : "flex flex-col items-center gap-4"
-        }`}
-      >
-        <div>
-          <h1 className="font-bold text-2xl">Logo</h1>
-        </div>
-        <div>
-          <Link to="/" className="text-lg text-white">
-            Home
-          </Link>
-
-          {user ? (
-            <Link to="/about" className="text-lg text-white ml-5">
-              About
-            </Link>
-          ) : null}
-        </div>
-        <div>
-          {user ? (
-            <button onClick={logout} className="text-lg text-white">
-              Log Out
-            </button>
-          ) : (
-            <Link to="/login" className="text-lg text-white">
-              Log In
-            </Link>
-          )}
-        </div>
+    <div className="layout">
+      <nav>
+        <Link to={"/"}>Home</Link>
+        {user ? (
+          <>
+            <Link to={"/dashboard"}>Dashboard</Link>
+            <button onClick={() => logout()}>Logout</button>
+          </>
+        ) : (
+          <button
+            onClick={() => {
+              login("avto");
+            }}
+          >
+            Log In
+          </button>
+        )}
       </nav>
-      <hr />
-      <Outlet />
+      <main>{children}</main>
     </div>
   );
 };
-
-export default Layout;

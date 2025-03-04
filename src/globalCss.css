@@ -1,0 +1,28 @@
+div {
+  text-align: center;
+}
+
+.layout nav {
+  background-color: royalblue;
+  color: white;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  padding: 30px 0px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.Login {
+  display: block;
+  margin: auto;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: royalblue;
+  color: #fff;
+  width: 200px;
+  border-radius: 10px;
+}/*# sourceMappingURL=globalCss.css.map */
