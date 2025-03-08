@@ -7,19 +7,19 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="layout">
-      <nav>
-        <Link to={"/"}>Home</Link>
+      <nav className="bg-blue-400 p-4 justify-center flex gap-4">
+        <Link to={"/"} className="text-white text-2xl" >Home</Link>
         {user ? (
           <>
-            <Link to={"/dashboard"}>Dashboard</Link>
-            <button onClick={() => logout()}>Logout</button>
+            <Link to={"/dashboard"} className="text-white text-2xl" >Dashboard</Link>
+            <button onClick={() => logout()}className="text-white text-2xl cursor-pointer" >Logout</button>
           </>
         ) : (
           <button
             onClick={() => {
               login("avto");
             }}
-          >
+          className="text-white text-2xl cursor-pointer" >
             Log In
           </button>
         )}
