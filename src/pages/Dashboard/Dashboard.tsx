@@ -1,21 +1,36 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDashboardData } from "../../redux/dashboardSlice";
+import { RootState, AppDispatch } from "../../redux/store";
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { data, loading, error } = useSelector(
+    (state: RootState) => state.dashboard
+  );
+  console.log(data);
+
+  useEffect(() => {
+    dispatch(fetchDashboardData());
+  }, [dispatch]);
+
   return (
-    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div className="bg-white shadow-lg rounded-2xl p-6">
-        <h2 className="text-xl font-semibold">Total Users</h2>
-        <p className="text-3xl font-bold mt-2">1,245</p>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded-2xl shadow-lg text-center w-3/4">
+        <h1 className="text-2xl font-bold mb-4">Dashboard Data</h1>
 
-      <div className="bg-white shadow-lg rounded-2xl p-6">
-        <h2 className="text-xl font-semibold">Revenue</h2>
-        <p className="text-3xl font-bold mt-2">$24,500</p>
-      </div>
+        {loading && <p>Loading...</p>}
+        {error && <p className="text-red-500">{error}</p>}
 
-      <div className="bg-white shadow-lg rounded-2xl p-6">
-        <h2 className="text-xl font-semibold">Orders</h2>
-        <p className="text-3xl font-bold mt-2">312</p>
+        {!loading && !error && (
+          <ul className="text-left">
+            {data.map((item) => (
+              <li key={item.id} className="p-2 border-b">
+                {item.body}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

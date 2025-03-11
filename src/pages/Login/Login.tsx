@@ -1,14 +1,16 @@
-import React from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/AuthSlice";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { login } = useAuth();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const logIn = () => {
-    login("Avto");
+    dispatch(login("Avto"));
     navigate("/");
   };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg text-center">
