@@ -8,7 +8,6 @@ const Dashboard = () => {
   const { data, loading, error } = useSelector(
     (state: RootState) => state.dashboard
   );
-  console.log(data);
 
   useEffect(() => {
     dispatch(fetchDashboardData());

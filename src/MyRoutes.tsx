@@ -4,6 +4,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import ProtectedRoute from "./ProtectedRoute";
+import DrinksPage from "./pages/DrinkPage/DrinkPage";
+
 const MyRoutes = () => {
   return (
     <BrowserRouter>
@@ -13,6 +15,7 @@ const MyRoutes = () => {
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/beers" element={<DrinksPage />} />
           </Route>
         </Routes>
       </Layout>

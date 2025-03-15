@@ -19,6 +19,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <Link to={"/dashboard"} className="text-white text-2xl">
               Dashboard
             </Link>
+            <Link to={"/beers"} className="text-white text-2xl">
+              Beers
+            </Link>
             <button
               onClick={() => dispatch(logout())}
               className="text-white text-2xl cursor-pointer"
